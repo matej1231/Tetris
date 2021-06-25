@@ -20,16 +20,12 @@ public class BlockLogic : MonoBehaviour
  
     private static Transform[,] grid = new Transform[width, height];
 
-    private void Start()
-    {
-        Time.timeScale = 1;
-    }
     void Update()
     {
         if (Time.time - lastTime > second)
         {
             transform.position = new Vector2(transform.position.x, transform.position.y - 1);
-            if (!CanMove())
+            if (!CanMove() && gameOver == false && Time.timeScale == 1)
             {
                 transform.position = new Vector2(transform.position.x, transform.position.y + 1);
                 FillGrid();
